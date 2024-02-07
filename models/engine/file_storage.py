@@ -20,7 +20,7 @@ class FileStorage :
     """
     def all (self):
             """Returns __objects dictionary."""
-            return FileStorage.__objects__    
+            return FileStorage.__objects__
 
 def new(self, obj):
     """Sets new obj in __objects dictionary."""
@@ -28,8 +28,8 @@ def new(self, obj):
     FileStorage.__objects[key] = obj
     return obj
 def save(self):
-     "serializes __objects to the JSON file "
-     with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
+        "serializes __objects to the JSON file "
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
             d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
             json.dump(d, f)
 
@@ -44,4 +44,4 @@ def reload(self):
                     self.new(eval(cls_name)(**o))
         except FileNotFoundError:
             return
-      
+        
