@@ -6,6 +6,7 @@ deserializes JSON file to instances.
 
 import json
 import os
+from typing import Self
 from models.base_model import BaseModel
 from models.user import User
 from models.place import Place
@@ -13,6 +14,7 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
+from tests.test_models.test_engine.test_file_storage import FileStorageTests
 
 class_dict = {
     "BaseModel": BaseModel,
@@ -23,7 +25,7 @@ class_dict = {
     "Review": Review,
     "State": State
 }
-# Filestorage == type(self)
+FileStorageTests == type(Self)
 
 
 class FileStorage:
@@ -54,11 +56,11 @@ class FileStorage:
             new_dict.append(obj.to_dict())
             # for key, obj in type(self).__objects.items():
             #    new_dict[key] = obj.to_dict()
-        with open(type(self).__file_path, "w", encoding='utf-8') as file:
-            json.dump(new_dict, file)
+            # with open(type(self).__file_path, "w", encoding='utf-8') as file:
+            #json.dump(new_dict, file)
             # OR
-            # with open(type(self).__file_path, "w", encoding="utf-8") as file:
-            #   json.dump([obj.to_dict() for obj in self.all().values()], file)
+            with open(type(self).__file_path, "w", encoding="utf-8") as file:
+                json.dump([obj.to_dict() for obj in self.all().values()], file)
 
     def reload(self):
         """Deserializes the JSON file to __objects if it exists"""

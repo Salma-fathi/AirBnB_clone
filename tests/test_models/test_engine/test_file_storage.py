@@ -26,6 +26,8 @@ class FileStorageTests(unittest.TestCase):
 
         key = bm_dict['__class__'] + "." + bm_dict['id']
         self.assertEqual(key in all_objs, True)
+        print("Keys in all_objs:", all_objs.keys())
+        print("Expected key:", key)
 
     def testStoreBaseModel2(self):
         """ Test save, reload and update functions """
@@ -85,7 +87,6 @@ class FileStorageTests(unittest.TestCase):
             FileStorage.save(self, 100)
 
         self.assertEqual(str(e.exception), msg)
-
 
 if __name__ == '__main__':
     unittest.main()
