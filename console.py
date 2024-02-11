@@ -95,25 +95,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
             else:
                 storage.all().pop(new_str)
-            #    del (storage.all()[new_str])
+                del (storage.all()[new_str])
                 storage.save()
-
-    # def do_all(self, line):
-    #    """ Print all instances in string representation """
-    #    new_list = []
-
-    #    if not line:
-    #        for key, obj in storage.all().items():
-    #            new_list.append(str(obj))
-    #        print(new_list)
-    #    elif line not in class_home:
-    #        print("** class doesn't exist **")
-    #    else:
-    #        for key, obj in storage.all().items():
-    #            if obj.__class__.__name__ == line:
-    #                new_list.append(str(obj))
-    #        print(new_list)
-
     def do_all(self, line):
         """ Print all instances in string representation """
         objects = []

@@ -32,7 +32,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            models.storage.new(self)  # as instructed also in task 5
+            models.storage.new(self)
 
     def __str__(self):
         """Returns a readable string representation
