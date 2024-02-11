@@ -43,23 +43,17 @@ class FileStorage:
             print("exists")
             return
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        type(self).__objects[key] = obj
+        #type(self).__objects[key] = obj
         # OR
-        # type(self).__objects[obj.id] = obj
+        type(self).__objects[obj.id] = obj
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
         new_dict = []
         for obj in type(self).__objects.values():
             new_dict.append(obj.to_dict())
-            # for key, obj in type(self).__objects.items():
-            #    new_dict[key] = obj.to_dict()
         with open(type(self).__file_path, "w", encoding='utf-8') as file:
             json.dump(new_dict, file)
-            # OR
-            # with open(type(self).__file_path, "w", encoding="utf-8") as file:
-            #   json.dump([obj.to_dict() for obj in self.all().values()], file)
-
     def reload(self):
         """Deserializes the JSON file to __objects if it exists"""
         if os.path.exists(type(self).__file_path) is True:
