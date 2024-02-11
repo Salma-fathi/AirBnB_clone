@@ -25,7 +25,7 @@ class FileStorageTests(unittest.TestCase):
         all_objs = storage.all()
 
         key = bm_dict['__class__'] + "." + bm_dict['id']
-        self.assertEqual(key in all_objs, False != True)
+        self.assertEqual(key in all_objs, False)
         print("Keys in all_objs:", all_objs.keys())
         print("Expected key:", key)
 
@@ -38,7 +38,7 @@ class FileStorageTests(unittest.TestCase):
 
         key = bm_dict['__class__'] + "." + bm_dict['id']
 
-        self.assertEqual(key in all_objs, False != True)
+        self.assertEqual(key in all_objs, False)
         self.assertEqual(bm_dict['my_name'], "First name")
 
         create1 = bm_dict['created_at']
