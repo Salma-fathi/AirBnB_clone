@@ -60,19 +60,19 @@ class FileStorageTests(unittest.TestCase):
 
     def testHasAttributes(self):
         """verify if attributes exist"""
-        self.assertEqual(hasattr(FileStorage, '_FileStorage__file_path'), False)
-        self.assertEqual(hasattr(FileStorage, '_FileStorage__objects'), False)
+        self.assertEqual(hasattr(FileStorage, '_FileStorage__file_path'), True)
+        self.assertEqual(hasattr(FileStorage, '_FileStorage__objects'), True)
 
     def testsave(self):
         """verify if JSON exists"""
         self.my_model.save()
-        self.assertEqual(os.path.exists(storage._FileStorage__file_path), False)
+        self.assertEqual(os.path.exists(storage._FileStorage__file_path), True)
         self.assertEqual(storage.all(), storage._FileStorage__objects)
 
     def testreload(self):
         """test if reload """
         self.my_model.save()
-        self.assertEqual(os.path.exists(storage._FileStorage__file_path), False)
+        self.assertEqual(os.path.exists(storage._FileStorage__file_path), True)
         dobj = storage.all()
         FileStorage._FileStorage__objects = {}
         self.assertNotEqual(dobj, FileStorage._FileStorage__objects)
