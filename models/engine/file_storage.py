@@ -43,15 +43,15 @@ class FileStorage:
             print("exists")
             return
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        #type(self).__objects[key] = obj
-        # OR
-        type(self).__objects[obj.id] = obj
+        type(self).__objects[key] = obj
+        
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
         new_dict = []
         for obj in type(self).__objects.values():
             new_dict.append(obj.to_dict())
+        
         with open(type(self).__file_path, "w", encoding='utf-8') as file:
             json.dump(new_dict, file)
     def reload(self):
