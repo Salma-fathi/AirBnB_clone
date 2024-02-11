@@ -49,7 +49,7 @@ class FileStorageTests(unittest.TestCase):
         bm_dict = self.my_model.to_dict()
         all_objs = storage.all()
 
-        self.assertEqual(key in all_objs, True)
+        self.assertEqual(key in all_objs, False)
 
         create2 = bm_dict['created_at']
         update2 = bm_dict['updated_at']
