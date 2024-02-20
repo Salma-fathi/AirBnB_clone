@@ -43,6 +43,7 @@ section.filters div.locations, section.filters div.amenities {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    
 }
 
 section.filters div.locations {
